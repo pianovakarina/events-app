@@ -8,25 +8,32 @@ interface IHomePageProps {
 }
 const HomePage: NextPage<IHomePageProps> = ({ data }) => {
   return (
-    <>
+    <div className="home_body">
       {data.map((event) => {
         return (
-          <Link href={`/events/${event.id}`} key={event.id} passHref>
-            <div>
+          <Link
+            className="card"
+            href={`/events/${event.id}`}
+            key={event.id}
+            passHref
+          >
+            <div className="image">
               <Image
-                width={200}
-                height={200}
+                width={450}
+                height={300}
                 src={event.image}
                 alt={event.title}
               />
             </div>
 
-            <h2 className="text-xl font-bold">{event.title}</h2>
-            <p>{event.description}</p>
+            <div className="content">
+              <h2>{event.title}</h2>
+              <p>{event.description}</p>
+            </div>
           </Link>
         );
       })}
-    </>
+    </div>
   );
 };
 

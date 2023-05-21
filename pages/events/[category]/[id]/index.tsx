@@ -1,6 +1,6 @@
 import { AllEvent } from "@/data/dataType";
+import SingleEvent from "@/src/components/events/SingleEvent";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Image from "next/image";
 
 interface IEventPageProps {
   activity: AllEvent | null;
@@ -9,18 +9,7 @@ const EventPage: NextPage<IEventPageProps> = ({ activity }) => {
   if (!activity) {
     return <div>Activity is not exist</div>;
   }
-  return (
-    <div>
-      <Image
-        src={activity.image}
-        width={1000}
-        height={500}
-        alt={activity.city}
-      />
-      <h1>{activity.title}</h1>
-      <p>{activity.description}</p>
-    </div>
-  );
+  return <SingleEvent activity={activity} />;
 };
 
 export default EventPage;

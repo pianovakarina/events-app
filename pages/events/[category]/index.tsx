@@ -1,7 +1,6 @@
 import { AllEvent, EventsCategory } from "@/data/dataType";
+import CatEvent from "@/src/components/events/CatEvent";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Image from "next/image";
-import Link from "next/link";
 
 interface ICategoryPageProps {
   city: EventsCategory;
@@ -9,20 +8,7 @@ interface ICategoryPageProps {
 }
 
 const CategoryPage: NextPage<ICategoryPageProps> = ({ city, events }) => {
-  return (
-    <div>
-      <h1>Events in {city.id}</h1>
-      {events.map((item) => {
-        return (
-          <Link href={`/events/${city.id}/${item.id}`} key={item.id}>
-            <Image alt={item.city} width={300} height={300} src={item.image} />
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </Link>
-        );
-      })}
-    </div>
-  );
+  return <CatEvent city={city} events={events} />;
 };
 
 export default CategoryPage;
